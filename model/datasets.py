@@ -1,16 +1,14 @@
 import pandas as pd
 import urllib
-import zipfile
-import os
 from torch.utils.data import Dataset
 import torch
 from pathlib import Path
 
-class SpamDataset(Dataset):
+class PropagandaDataset(Dataset):
     def __init__(self, csv_file, tokenizer, max_length=None, pad_token_id=50256):
         self.data = pd.read_csv(csv_file)
         self.encoded_texts = [
-            tokenizer.encode(text) for text in self.data["Text"]
+            tokenizer.encode(text) for text in self.data["text"]
         ]
         
         if max_length is None:
@@ -29,7 +27,7 @@ class SpamDataset(Dataset):
 
     def __getitem__(self, index):
         encoded = self.encoded_texts[index]
-        label = self.data.iloc[index]["Label"]
+        label = self.data.iloc[index]["label"]
         return (
             torch.tensor(encoded, dtype=torch.long),
             torch.tensor(label, dtype=torch.long)
