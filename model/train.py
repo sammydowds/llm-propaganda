@@ -39,7 +39,7 @@ def train(
                 print(
                     f"Ep {epoch + 1} (Step {global_step:06d}): "
                     f"Train loss {train_loss:.3f}, "
-                    f"Val loss {train_loss:.3f}"
+                    f"Val loss {val_loss:.3f}"
                 )
 
         train_accuracy = calc_accuracy_loader(
@@ -101,7 +101,7 @@ def train_classifier(skip_cache = False):
     )
     val_dataset = PropagandaDataset(
         csv_file='validation.csv',
-        max_length=None,
+        max_length=train_dataset.max_length,
         tokenizer=tokenizer
     )
 
@@ -138,6 +138,7 @@ def train_classifier(skip_cache = False):
     # cache trained model
     if not skip_cache:
         torch.save(gpt.state_dict(), TRAINED_MODEL_CACHE)
+        print(f"Trained model cached to {TRAINED_MODEL_CACHE}")
      
     return gpt
 

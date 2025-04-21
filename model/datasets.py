@@ -46,8 +46,8 @@ class PropagandaDataset(Dataset):
 
 class PropagandaData():
     def __init__(self):
-        self.url = "https://raw.githubusercontent.com/leereak/propaganda-detection/refs/heads/master/data/news/news-s.tsv"
-        self.extracted_path = Path("news-s.tsv")
+        self.url = "https://raw.githubusercontent.com/leereak/propaganda-detection/refs/heads/master/data/tweets/tweets.tsv"
+        self.extracted_path = Path("data.tsv")
 
     def download(self):
         if self.extracted_path.exists():
@@ -93,7 +93,7 @@ class PropagandaData():
         df = self.read()
         balanced_df = self.balance(df)
 
-        train_df, validation_df, test_df = self.random_split(balanced_df, 0.7, 0.1)
+        train_df, validation_df, test_df = self.random_split(balanced_df, 0.2, 0.09)
         train_df.to_csv("train.csv", index=None)
         validation_df.to_csv("validation.csv", index=None)
         test_df.to_csv("test.csv", index=None)

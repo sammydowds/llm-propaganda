@@ -3,9 +3,10 @@ import torch
 def calc_loss_batch(input_batch, target_batch, model, device):
     input_batch = input_batch.to(device)
     target_batch = target_batch.to(device)
-    logits = model(input_batch)[:, -1, :]
+    logits = model(input_batch)
+    inferred = logits[:, -1, :]
 
-    loss = torch.nn.functional.cross_entropy(logits, target_batch)
+    loss = torch.nn.functional.cross_entropy(inferred, target_batch)
     return loss
 
 def calc_accuracy_loader(data_loader, model, device, num_batches=None):
