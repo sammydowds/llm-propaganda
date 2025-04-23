@@ -13,5 +13,8 @@ wheels/
 *.csv
 *.tsv
 
+# performance 
+*.pdf
+
 # model cache
 *.pth

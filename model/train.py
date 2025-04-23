@@ -91,7 +91,7 @@ def train_classifier(skip_cache = False):
     start_time = time.time()
     torch.manual_seed(123)
     optimizer = torch.optim.AdamW(gpt.parameters(), lr=5e-5, weight_decay=0.1)
-    num_epochs = 5
+    num_epochs = 2 
     device = torch.device("cpu")
 
     train_dataset = PropagandaDataset(
@@ -140,7 +140,5 @@ def train_classifier(skip_cache = False):
         torch.save(gpt.state_dict(), TRAINED_MODEL_CACHE)
         print(f"Trained model cached to {TRAINED_MODEL_CACHE}")
      
-    return gpt
-
 if __name__ == "__main__":
     train_classifier()
