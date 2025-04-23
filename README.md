@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is a simple POC / toy to fine-tune an LLM (GPT-2 in this case) for classifying propaganda. Right now it pulls the gpt2 weights and fine tunes that model with a limited sub set of data from a [weakely labeled propaganda dataset](https://github.com/leereak/propaganda-detection/blob/master/data/tweets/tweets.tsv).
+This is a simple POC / toy to fine-tune an LLM (GPT-2 in this case) for classifying propaganda. Right now it pulls the gpt2 weights and fine tunes that model with a limited subset of data from a [weakly labeled propaganda dataset](https://github.com/leereak/propaganda-detection/blob/master/data/tweets/tweets.tsv).
 
 ## Training locally
 
@@ -16,7 +16,7 @@ cd model && uv sync && source .venv/bin/activate
 python -m training.train 
 ```
 
-This will output a file `propaganda-classfier.pth` with the pytorch state dict for future use.
+This will output `propaganda-classfier.pth`.
 
 It should take ~10 mins to train (MBP), sample training output:
 
