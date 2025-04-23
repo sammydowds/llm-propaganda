@@ -1,14 +1,12 @@
-from loss import calc_accuracy_loader, calc_loss_batch, evaluate_model
-from plot import plot_values
-from trained_model import get_small_gpt_2_model
+from .loss import calc_accuracy_loader, calc_loss_batch, evaluate_model
+from .plot import plot_values
+from .trained_model import get_small_gpt_2_model
 import torch
-from config import GPT_SMALL
+from .config import GPT_SMALL
 import tiktoken
 from torch.utils.data import DataLoader 
 import time
-from datasets import PropagandaDataset 
-from datasets import PropagandaData 
-import matplotlib.pyplot as plt
+from .datasets import PropagandaDataset, PropagandaData 
 
 TRAINED_MODEL_CACHE = 'propaganda-classifier.pth'
 

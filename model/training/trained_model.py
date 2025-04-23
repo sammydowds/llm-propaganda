@@ -1,5 +1,5 @@
-from config import GPT_SMALL 
-from gpt import GPTModel
+from .config import GPT_SMALL 
+from .gpt import GPTModel
 import torch
 import os
 import urllib.request
